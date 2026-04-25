@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudio de Mercado – Finca La Cocoroca</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:    #B5262A;
+    --blue:   #53B0CD;
+    --gold:   #D4A017;
+    --brown:  #6B3F1F;
+    --cream:  #F8F1E4;
+    --white:  #FFFFFF;
+    --text:   #2C1A0E;
+    --muted:  #8B6F5E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: 'Lora', Georgia, serif;
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 80% 10%, rgba(83,176,205,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 90%, rgba(181,38,42,0.08) 0%, transparent 50%);
+  }
+  header { background: var(--brown); color: var(--cream); padding: 0; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(212,160,23,0.07) 18px, rgba(212,160,23,0.07) 19px); }
+  .header-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 24px; padding: 28px 40px; }
+  .logo-mark { width: 80px; height: 80px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 2rem; color: var(--brown); font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 3px solid rgba(255,255,255,0.2); }
+  .header-text h1 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; }
+  .header-text h1 span { color: var(--gold); }
+  .header-text p { font-family: 'Josefin Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,241,228,0.7); margin-top: 4px; }
+  .header-badge { margin-left: auto; background: var(--red); color: var(--white); font-family: 'Josefin Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; white-space: nowrap; }
+  .intro-banner { background: var(--blue); color: var(--white); padding: 14px 40px; font-family: 'Josefin Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.06em; text-align: center; line-height: 1.6; }
+  .intro-banner strong { font-weight: 600; }
+  main { max-width: 760px; margin: 40px auto 60px; padding: 0 20px; }
+  .card { background: var(--white); border-radius: 4px; border-left: 5px solid var(--gold); box-shadow: 0 2px 18px rgba(107,63,31,0.10); padding: 32px 36px; margin-bottom: 28px; animation: fadeUp 0.5s ease both; }
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.10s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+  .card:nth-child(5) { animation-delay: 0.20s; }
+  .card:nth-child(6) { animation-delay: 0.25s; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--brown); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+  .card-title .num { background: var(--red); color: var(--white); font-family: 'Josefin Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .card-subtitle { font-family: 'Josefin Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid rgba(212,160,23,0.25); }
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-family: 'Josefin Sans', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown); margin-bottom: 7px; }
+  label .optional { font-weight: 300; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted); text-transform: none; }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea { width: 100%; font-family: 'Lora', serif; font-size: 0.9rem; color: var(--text); background: #FDFAF5; border: 1.5px solid #DDD5C5; border-radius: 3px; padding: 11px 14px; transition: border-color 0.2s, box-shadow 0.2s; outline: none; -webkit-appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(83,176,205,0.15); background: var(--white); }
+  textarea { resize: vertical; min-height: 80px; }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B3F1F' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+  .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 4px; }
+  .options-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .opt-label { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #FDFAF5; border: 1.5px solid #DDD5C5; border-radius: 3px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-family: 'Lora', serif; font-size: 0.88rem; color: var(--text); text-transform: none; letter-spacing: 0; font-weight: 400; user-select: none; }
+  .opt-label:hover { border-color: var(--blue); background: rgba(83,176,205,0.05); }
+  .opt-label input[type="radio"], .opt-label input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--red); flex-shrink: 0; cursor: pointer; padding: 0; border: none; background: none; box-shadow: none; }
+  .opt-label input:checked ~ span { color: var(--red); font-style: italic; }
+  .scale-wrap { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .scale-label-ends { font-family: 'Josefin Sans', sans-serif; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .scale-btns { display: flex; gap: 6px; }
+  .scale-btn { position: relative; }
+  .scale-btn input { position: absolute; opacity: 0; width: 0; }
+  .scale-btn label { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: #FDFAF5; border: 1.5px solid #DDD5C5; border-radius: 3px; font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.15s; text-transform: none; letter-spacing: 0; }
+  .scale-btn input:checked + label { background: var(--red); border-color: var(--red); color: var(--white); box-shadow: 0 2px 8px rgba(181,38,42,0.3); }
+  .scale-btn label:hover { border-color: var(--red); color: var(--red); }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 540px) { .row-2 { grid-template-columns: 1fr; } }
+  .submit-wrap { text-align: center; margin-top: 8px; }
+  .btn-submit { background: var(--red); color: var(--white); font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; border: none; padding: 16px 48px; border-radius: 3px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(181,38,42,0.3); }
+  .btn-submit:hover { background: #97171B; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(181,38,42,0.4); }
+  .btn-submit:active { transform: translateY(0); }
+  #success { display: none; background: var(--white); border-left: 5px solid #4CAF50; border-radius: 4px; box-shadow: 0 2px 18px rgba(107,63,31,0.10); padding: 48px 36px; text-align: center; animation: fadeUp 0.5s ease; }
+  #success .check { font-size: 3rem; margin-bottom: 16px; }
+  #success h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--brown); margin-bottom: 10px; }
+  #success p { font-family: 'Lora', serif; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+  footer { text-align: center; padding: 24px; font-family: 'Josefin Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-top: 1px solid rgba(107,63,31,0.12); }
+  footer strong { color: var(--brown); }
+  .progress-bar-wrap { background: rgba(107,63,31,0.1); height: 4px; position: sticky; top: 0; z-index: 100; }
+  #progress-bar { height: 100%; background: linear-gradient(90deg, var(--red), var(--gold)); width: 0%; transition: width 0.4s ease; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-mark">🐔</div>
+    <div class="header-text">
+      <h1>Finca <span>La Cocoroca</span></h1>
+      <p>Arecibo, Puerto Rico &nbsp;·&nbsp; Huevos de Mesa Frescos</p>
+    </div>
+    <div class="header-badge">Estudio de Mercado 2026</div>
+  </div>
+</header>
+
+<div class="intro-banner">
+  <strong>¡Gracias por participar!</strong> Sus respuestas nos ayudan a mejorar nuestros productos y servicios.
+  El formulario toma aproximadamente <strong>5 minutos</strong> y es completamente anónimo.
+</div>
+
+<main>
+  <form id="survey" novalidate>
+
+```
+<div class="card">
+  <div class="card-title"><span class="num">1</span> Perfil del Consumidor</div>
+  <div class="card-subtitle">Información general — ayúdenos a conocerle</div>
+  <div class="row-2">
+    <div class="field">
+      <label>Municipio de residencia</label>
+      <input type="text" name="municipio" placeholder="Ej. Arecibo, Utuado…" required>
+    </div>
+    <div class="field">
+      <label>Rango de edad</label>
+      <select name="edad">
+        <option value="">Seleccione…</option>
+        <option>18–24 años</option><option>25–34 años</option><option>35–44 años</option>
+        <option>45–54 años</option><option>55–64 años</option><option>65 años o más</option>
+      </select>
+    </div>
+  </div>
+  <div class="row-2">
+    <div class="field">
+      <label>Tamaño del hogar</label>
+      <select name="hogar">
+        <option value="">Seleccione…</option>
+        <option>1 persona</option><option>2 personas</option><option>3–4 personas</option>
+        <option>5–6 personas</option><option>7 o más personas</option>
+      </select>
+    </div>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">2</span> Hábitos de Compra</div>
+  <div class="card-subtitle">¿Cómo y dónde adquiere sus huevos actualmente?</div>
+
+  <div class="field">
+    <label>¿Cuántos huevos consume por semana?</label>
+    <select name="consumo_semanal">
+      <option value="">Seleccione…</option>
+      <option>1–6 huevos (media docena o menos)</option><option>7–12 huevos (hasta una docena)</option>
+      <option>13–24 huevos (1–2 docenas)</option><option>25–36 huevos (2–3 docenas)</option>
+      <option>Más de 36 huevos</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>¿Dónde compra sus huevos? <span class="optional">(todos los que apliquen)</span></label>
+    <div class="options-grid">
+      <label class="opt-label"><input type="checkbox" name="lugar" value="supermercado"><span>Supermercado</span></label>
+      <label class="opt-label"><input type="checkbox" name="lugar" value="colmado"><span>Colmado / Tienda local</span></label>
+      <label class="opt-label"><input type="checkbox" name="lugar" value="finca"><span>Directamente de una finca</span></label>
+      <label class="opt-label"><input type="checkbox" name="lugar" value="delivery"><span>Delivery / Pedido online</span></label>
+      <label class="opt-label"><input type="checkbox" name="lugar" value="cooperativa"><span>Cooperativa / Mercado agrícola</span></label>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">3</span> Preferencias de Producto</div>
+  <div class="card-subtitle">¿Qué valora al elegir sus huevos?</div>
+  <div class="field">
+    <label>¿Qué tipo de huevo prefiere?</label>
+    <div class="options-grid">
+      <label class="opt-label"><input type="radio" name="tipo_huevo" value="convencional"><span>Convencional</span></label>
+      <label class="opt-label"><input type="radio" name="tipo_huevo" value="free_range"><span>Free-range / Gallina libre</span></label>
+      <label class="opt-label"><input type="radio" name="tipo_huevo" value="organico"><span>Orgánico certificado</span></label>
+      <label class="opt-label"><input type="radio" name="tipo_huevo" value="indiferente"><span>Me es indiferente</span></label>
+    </div>
+  </div>
+  <div class="field">
+    <label>Importancia de cada factor <span class="optional">(1 = baja · 5 = alta)</span></label>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+      <div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:6px;">Frescura</div>
+        <div class="scale-wrap"><span class="scale-label-ends">Baja</span><div class="scale-btns"><div class="scale-btn"><input type="radio" name="imp_frescura" id="f1" value="1"><label for="f1">1</label></div><div class="scale-btn"><input type="radio" name="imp_frescura" id="f2" value="2"><label for="f2">2</label></div><div class="scale-btn"><input type="radio" name="imp_frescura" id="f3" value="3"><label for="f3">3</label></div><div class="scale-btn"><input type="radio" name="imp_frescura" id="f4" value="4"><label for="f4">4</label></div><div class="scale-btn"><input type="radio" name="imp_frescura" id="f5" value="5"><label for="f5">5</label></div></div><span class="scale-label-ends">Alta</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:6px;">Precio</div>
+        <div class="scale-wrap"><span class="scale-label-ends">Baja</span><div class="scale-btns"><div class="scale-btn"><input type="radio" name="imp_precio" id="p1" value="1"><label for="p1">1</label></div><div class="scale-btn"><input type="radio" name="imp_precio" id="p2" value="2"><label for="p2">2</label></div><div class="scale-btn"><input type="radio" name="imp_precio" id="p3" value="3"><label for="p3">3</label></div><div class="scale-btn"><input type="radio" name="imp_precio" id="p4" value="4"><label for="p4">4</label></div><div class="scale-btn"><input type="radio" name="imp_precio" id="p5" value="5"><label for="p5">5</label></div></div><span class="scale-label-ends">Alta</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:6px;">Origen local (Puerto Rico)</div>
+        <div class="scale-wrap"><span class="scale-label-ends">Baja</span><div class="scale-btns"><div class="scale-btn"><input type="radio" name="imp_local" id="l1" value="1"><label for="l1">1</label></div><div class="scale-btn"><input type="radio" name="imp_local" id="l2" value="2"><label for="l2">2</label></div><div class="scale-btn"><input type="radio" name="imp_local" id="l3" value="3"><label for="l3">3</label></div><div class="scale-btn"><input type="radio" name="imp_local" id="l4" value="4"><label for="l4">4</label></div><div class="scale-btn"><input type="radio" name="imp_local" id="l5" value="5"><label for="l5">5</label></div></div><span class="scale-label-ends">Alta</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:6px;">Bienestar animal</div>
+        <div class="scale-wrap"><span class="scale-label-ends">Baja</span><div class="scale-btns"><div class="scale-btn"><input type="radio" name="imp_bienestar" id="b1" value="1"><label for="b1">1</label></div><div class="scale-btn"><input type="radio" name="imp_bienestar" id="b2" value="2"><label for="b2">2</label></div><div class="scale-btn"><input type="radio" name="imp_bienestar" id="b3" value="3"><label for="b3">3</label></div><div class="scale-btn"><input type="radio" name="imp_bienestar" id="b4" value="4"><label for="b4">4</label></div><div class="scale-btn"><input type="radio" name="imp_bienestar" id="b5" value="5"><label for="b5">5</label></div></div><span class="scale-label-ends">Alta</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--brown);margin-bottom:6px;">Empaque / presentación</div>
+        <div class="scale-wrap"><span class="scale-label-ends">Baja</span><div class="scale-btns"><div class="scale-btn"><input type="radio" name="imp_empaque" id="e1" value="1"><label for="e1">1</label></div><div class="scale-btn"><input type="radio" name="imp_empaque" id="e2" value="2"><label for="e2">2</label></div><div class="scale-btn"><input type="radio" name="imp_empaque" id="e3" value="3"><label for="e3">3</label></div><div class="scale-btn"><input type="radio" name="imp_empaque" id="e4" value="4"><label for="e4">4</label></div><div class="scale-btn"><input type="radio" name="imp_empaque" id="e5" value="5"><label for="e5">5</label></div></div><span class="scale-label-ends">Alta</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">4</span> Precio y Disposición a Pagar</div>
+  <div class="card-subtitle">Gallinas criadas en campo abierto en Arecibo, Puerto Rico</div>
+  <div class="field">
+    <label>¿Pagaría más por huevos frescos de finca local free-range?</label>
+    <div class="options-grid cols-2">
+      <label class="opt-label"><input type="radio" name="paga_mas" value="si_mucho"><span>Sí, definitivamente</span></label>
+      <label class="opt-label"><input type="radio" name="paga_mas" value="si_poco"><span>Sí, algo más</span></label>
+      <label class="opt-label"><input type="radio" name="paga_mas" value="igual"><span>Solo si el precio es igual</span></label>
+      <label class="opt-label"><input type="radio" name="paga_mas" value="no"><span>No, el precio es lo primero</span></label>
+    </div>
+  </div>
+  <div class="field">
+    <label>¿Cuánto es justo pagar por una docena (12 huevos)?</label>
+    <select name="precio_justo">
+      <option value="">Seleccione…</option>
+      <option>$5.00 – $6.99</option><option>$7.00 – $8.99</option><option>$9.00 – $10.99</option>
+      <option>$11.00 – $12.99</option><option>$13.00 o más si la calidad lo justifica</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>¿Cuánto es justo pagar por un cartón (30 huevos)?</label>
+    <select name="precio_carton">
+      <option value="">Seleccione…</option>
+      <option>$12.50 – $14.99</option>
+      <option>$15.00 – $17.99</option>
+      <option>$18.00 – $20.99</option>
+      <option>$21.00 – $24.99</option>
+      <option>$25.00 – $27.99</option>
+      <option>$28.00 – $30.00</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>¿Le interesa una suscripción mensual con entrega a domicilio?</label>
+    <div style="font-family:'Lora',serif;font-size:0.82rem;color:var(--muted);margin-bottom:10px;font-style:italic;">Ej. 6 docenas/mes a $46 · Entrega en Arecibo y área metropolitana</div>
+    <div class="options-grid cols-2">
+      <label class="opt-label"><input type="radio" name="suscripcion" value="si_interesa"><span>Sí, me interesa mucho</span></label>
+      <label class="opt-label"><input type="radio" name="suscripcion" value="tal_vez"><span>Tal vez, depende del precio</span></label>
+      <label class="opt-label"><input type="radio" name="suscripcion" value="prefiero_comprar"><span>Prefiero comprar según necesite</span></label>
+      <label class="opt-label"><input type="radio" name="suscripcion" value="no_interesa"><span>No me interesa</span></label>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">5</span> Canales y Comunicación</div>
+  <div class="card-subtitle">¿Cómo prefiere conectar con su finca local?</div>
+  <div class="field">
+    <label>¿Cómo prefiere hacer sus pedidos? <span class="optional">(todos los que apliquen)</span></label>
+    <div class="options-grid">
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="whatsapp"><span>WhatsApp</span></label>
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="instagram"><span>Instagram / DM</span></label>
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="website"><span>Página web / tienda online</span></label>
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="telefono"><span>Llamada telefónica</span></label>
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="punto_venta"><span>Punto de venta físico</span></label>
+      <label class="opt-label"><input type="checkbox" name="canal_pedido" value="otro_canal"><span>Otro</span></label>
+    </div>
+  </div>
+  <div class="field">
+    <label>¿Cómo se enteró de Finca La Cocoroca?</label>
+    <div class="options-grid">
+      <label class="opt-label"><input type="checkbox" name="como_entero" value="redes"><span>Redes sociales</span></label>
+      <label class="opt-label"><input type="checkbox" name="como_entero" value="boca"><span>Recomendación de alguien</span></label>
+      <label class="opt-label"><input type="checkbox" name="como_entero" value="google"><span>Búsqueda en Google</span></label>
+      <label class="opt-label"><input type="checkbox" name="como_entero" value="letrero"><span>Letrero / publicidad local</span></label>
+      <label class="opt-label"><input type="checkbox" name="como_entero" value="feria"><span>Feria o mercado agrícola</span></label>
+
+    </div>
+  </div>
+  <div class="field">
+    <label>¿Qué red social usa más para descubrir productos locales?</label>
+    <div class="options-grid cols-2">
+      <label class="opt-label"><input type="radio" name="red_social" value="instagram"><span>Instagram</span></label>
+      <label class="opt-label"><input type="radio" name="red_social" value="facebook"><span>Facebook</span></label>
+      <label class="opt-label"><input type="radio" name="red_social" value="tiktok"><span>TikTok</span></label>
+      <label class="opt-label"><input type="radio" name="red_social" value="ninguna"><span>No uso redes para eso</span></label>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="num">6</span> Su Opinión</div>
+  <div class="card-subtitle">Sus ideas nos ayudan a crecer — ¡hable con toda libertad!</div>
+  <div class="field">
+    <label>¿Qué le gustaría ver que no encuentra hoy? <span class="optional">(opcional)</span></label>
+    <textarea name="sugerencias" placeholder="Ej. tamaños diferentes, empaque reutilizable, huevos de gallinas criollas…"></textarea>
+  </div>
+  <div class="field">
+    <label>¿Algún comentario para Finca La Cocoroca? <span class="optional">(opcional)</span></label>
+    <textarea name="comentarios" placeholder="Sus ideas son bienvenidas…"></textarea>
+  </div>
+  <div class="field">
+    <label>Número de teléfono <span class="optional">(opcional)</span></label>
+    <input type="tel" name="telefono" placeholder="Ej. 787-555-1234">
+  </div>
+  <div class="field">
+    <label>Correo electrónico <span class="optional">(opcional)</span></label>
+    <input type="email" name="email_contacto" placeholder="su@correo.com">
+  </div>
+</div>
+
+<div class="submit-wrap">
+  <button type="submit" class="btn-submit">Enviar Respuestas &nbsp;→</button>
+  <p style="font-family:'Josefin Sans',sans-serif;font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;margin-top:12px;text-transform:uppercase;">Sus datos son confidenciales y usados únicamente con fines estadísticos</p>
+</div>
+```
+
+  </form>
+
+  <div id="success">
+    <div class="check">🥚</div>
+    <h2>¡Gracias por su tiempo!</h2>
+    <p>Sus respuestas han sido registradas.<br>Finca La Cocoroca le agradece su apoyo a la agricultura local de Puerto Rico.</p>
+    <div style="margin:28px auto 0;max-width:340px;background:#F8F1E4;border-radius:4px;padding:20px 24px;border:1.5px solid rgba(212,160,23,0.35);">
+      <p style="font-family:'Josefin Sans',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Nueva persona en</p>
+      <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--red);line-height:1;" id="kiosk-countdown">8</div>
+      <p style="font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;">segundos</p>
+    </div>
+    <button onclick="resetKiosk()" style="margin-top:20px;background:var(--brown);color:var(--cream);font-family:'Josefin Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;border:none;padding:13px 32px;border-radius:3px;cursor:pointer;">Comenzar ahora &rarr;</button>
+    <p style="font-family:'Josefin Sans',sans-serif;font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;margin-top:20px;text-transform:uppercase;">Finca La Cocoroca &nbsp;&middot;&nbsp; Arecibo, Puerto Rico</p>
+  </div>
+</main>
+
+<footer>
+  <strong>Finca La Cocoroca</strong> &nbsp;·&nbsp; Arecibo, Puerto Rico &nbsp;·&nbsp; Huevos Frescos de Gallinas Criadas en Campo &nbsp;·&nbsp; 2026
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  const EMAILJS_PUBLIC_KEY  = '32WkHeRQOq4fXZ9Wt';
+  const EMAILJS_SERVICE_ID  = 'service_9mxyylg';
+  const EMAILJS_TEMPLATE_ID = 'template_qqg340k';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  function updateProgress() {
+    const allRadioGroups = [...new Set(Array.from(document.querySelectorAll('#survey input[type="radio"]')).map(r => r.name))];
+    const checkedGroups  = allRadioGroups.filter(n => document.querySelector(`input[name="${n}"]:checked`));
+    const textFields     = Array.from(document.querySelectorAll('#survey input:not([type="radio"]):not([type="checkbox"]), #survey select, #survey textarea'));
+    const filledText     = textFields.filter(i => i.value.trim() !== '');
+    const pct = Math.min(100, Math.round(((checkedGroups.length + filledText.length) / (allRadioGroups.length + textFields.length)) * 100));
+    document.getElementById('progress-bar').style.width = pct + '%';
+  }
+  document.getElementById('survey').addEventListener('change', updateProgress);
+  document.getElementById('survey').addEventListener('input',  updateProgress);
+
+  function collectData() {
+    const f = document.getElementById('survey');
+    const get = name => { const el = f.querySelector(`[name="${name}"]`); return el ? el.value : ''; };
+    const getRadio = name => { const el = f.querySelector(`input[name="${name}"]:checked`); return el ? el.value : 'No contestó'; };
+    const getChecks = name => { const els = f.querySelectorAll(`input[name="${name}"]:checked`); return els.length ? Array.from(els).map(e => e.value).join(', ') : 'Ninguno'; };
+    return {
+      municipio: get('municipio') || 'No indicó', edad: get('edad') || 'No indicó',
+      hogar: get('hogar') || 'No indicó',
+      consumo_semanal: get('consumo_semanal') || 'No indicó',
+      lugar_compra: getChecks('lugar'),
+      tipo_huevo: getRadio('tipo_huevo'), imp_frescura: getRadio('imp_frescura'),
+      imp_precio: getRadio('imp_precio'), imp_local: getRadio('imp_local'),
+      imp_bienestar: getRadio('imp_bienestar'), imp_empaque: getRadio('imp_empaque'),
+      paga_mas: getRadio('paga_mas'), precio_justo: get('precio_justo') || 'No indicó', precio_carton: get('precio_carton') || 'No indicó',
+      suscripcion: getRadio('suscripcion'), canal_pedido: getChecks('canal_pedido'),
+      como_entero: getChecks('como_entero'), red_social: getRadio('red_social'),
+      sugerencias: get('sugerencias') || '—', comentarios: get('comentarios') || '—',
+      telefono: get('telefono') || 'No dejó teléfono',
+      email_contacto: get('email_contacto') || 'No dejó correo',
+      fecha_hora: new Date().toLocaleString('es-PR', { timeZone: 'America/Puerto_Rico' }),
+      to_email: 'Fincalacocoroca@gmail.com'
+    };
+  }
+
+  let kioskTimer = null;
+  function startKioskCountdown() {
+    let secs = 8;
+    const el = document.getElementById('kiosk-countdown');
+    el.textContent = secs;
+    kioskTimer = setInterval(() => {
+      secs--;
+      el.textContent = secs;
+      if (secs <= 0) { clearInterval(kioskTimer); resetKiosk(); }
+    }, 1000);
+  }
+
+  function resetKiosk() {
+    document.getElementById('survey').reset();
+    document.getElementById('survey').style.display = 'block';
+    document.getElementById('success').style.display = 'none';
+    document.getElementById('progress-bar').style.width = '0%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (kioskTimer) { clearInterval(kioskTimer); kioskTimer = null; }
+  }
+
+  document.getElementById('survey').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!this.municipio.value.trim()) {
+      alert('Por favor indique su municipio antes de enviar.');
+      return;
+    }
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Enviando…';
+    btn.disabled = true;
+    const formData = collectData();
+
+    // Enviar a Gmail via EmailJS
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData);
+    } catch (err) {
+      console.warn('EmailJS error:', err);
+    }
+
+    // Enviar a Google Sheets via Apps Script
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbzYUsy_iywnrffVf098wabQdQKwiwN63qj9LjDYNPsDLKs3uEiDAch1FeXvLyg7uA3ndg/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+    } catch (err) {
+      console.warn('Sheets error:', err);
+    }
+    document.getElementById('progress-bar').style.width = '100%';
+    this.style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    btn.textContent = 'Enviar Respuestas →';
+    btn.disabled = false;
+    startKioskCountdown();
+  });
+</script>
+
+</body>
+</html>
